@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: admin-dashboard-container
-          image: shivsoftapp/admin-dashbaord:039
+          image: vinodgangwar92/etslab:123
           ports:
             - containerPort: 80
