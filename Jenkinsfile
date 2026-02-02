@@ -44,7 +44,7 @@ pipeline {
                 $image = "$env:IMAGE_NAME`:$env:IMAGE_TAG"
                 (Get-Content deployment.yaml) `
                   -replace "IMAGE_NAME", $image |
-                Set-Content k8s\\deployment.yaml
+                Set-Content deployment.yaml
                 '''
             }
         }
@@ -57,8 +57,8 @@ pipeline {
 
                     kubectl get nodes || exit /b 1
 
-                    kubectl apply -f k8s/deployment.yaml || exit /b 1
-                    kubectl apply -f k8s/service.yaml || exit /b 1
+                    kubectl apply -f deployment.yaml || exit /b 1
+                    kubectl apply -f service.yaml || exit /b 1
                     '''
                 }
             }
