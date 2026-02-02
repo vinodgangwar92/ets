@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "shivsoftapp/admin-dashbaord"
-        IMAGE_TAG  = "039"
+        IMAGE_NAME = "vinodgangwar92/etslab"
+        IMAGE_TAG  = "123"
     }
 
     stages {
@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout Code from GitLab') {
             steps {
                 git branch: 'main',
-                    url: 'https://gitlab.com/SOFTAPP-TECHNOLOGIES/k8s-jenkins-cicd-pipeline.git'
+                    url: 'https://github.com/vinodgangwar92/ets.git'
             }
         }
 
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 powershell '''
                 $image = "$env:IMAGE_NAME`:$env:IMAGE_TAG"
-                (Get-Content k8s\\deployment.yaml) `
+                (Get-Content deployment.yaml) `
                   -replace "IMAGE_NAME", $image |
                 Set-Content k8s\\deployment.yaml
                 '''
